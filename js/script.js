@@ -158,11 +158,11 @@ map.on('load', function() {
   csvData.forEach(function(row) {
       let data = row["EMIACRE"],
       color
-    if (data == 6) color = '#d73027'
-    else if (data >= 6 && data < 20) color = '#fc8d59'
-    else if (data >=20 && data < 80) color = '#fee090'
-    else if (data >= 80 && data < 100) color = '#e0f3f8'
-    else if (data >= 100 && data < 200) color ='#91bfdb'
+    if (data < 10) color = '#d73027'
+    else if (data >= 10 && data < 20) color = '#fc8d59'
+    else if (data >=20 && data < 40) color = '#fee090'
+    else if (data >= 40 && data < 80) color = '#e0f3f8'
+    else if (data >= 80 && data < 150) color ='#91bfdb'
     else { color = '#4575b4'; }
     expression.push(row['geoid'].toString(), color);
   });
