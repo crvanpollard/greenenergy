@@ -102,9 +102,7 @@ map.on('load', function() {
     'source-layer': 'municipalities',
     'layout': {},
     'paint': {
-        'fill-color': expression,
-        'fill-opacity': 0
-
+        'fill-opacity': 1
     }
   })
 
@@ -155,29 +153,24 @@ map.on('load', function() {
   map.on('click', 'municipality-fill', function(e){
     getReport(e)
   })
-  var expression = ["match", ["get", "name"]];
- 
-// Calculate color for each state based on the unemployment rate
-//csvData.forEach(function(row) {
-//var color = (row["EMIACRE"] / 100);
-//var color = "rgba(" + 0 + ", " + green + ", " + 0 + ", 1)";
-//expression.push(row["name"], color);
-//});
 
-csvData.forEach(function(row) {
-  let data = row["EMIACRE"],
-    color
-  if (data = 6) color = #d73027
-  else if (data >= 6 && data < 20) color = #fc8d59
-  else if (data >=20 && data < 80) color = #fee090
-  else if (data >= 80 && data < 100) color = #e0f3f8
-  else if (data >= 100 && data < 200) color = r#91bfdb
-  else { color = #4575b4; }
-expression.push(row["name"], color);
-});
- 
-// Last value is the default, used where there is no data
-expression.push("rgba(0,0,0,0)");
+  let expression = ["match", ["get", "geoid"]]
+  csvData.forEach(function(row) {
+      let data = row["EMIACRE"],
+      color
+    if (data == 6) color = '#d73027'
+    else if (data >= 6 && data < 20) color = '#fc8d59'
+    else if (data >=20 && data < 80) color = '#fee090'
+    else if (data >= 80 && data < 100) color = '#e0f3f8'
+    else if (data >= 100 && data < 200) color ='#91bfdb'
+    else { color = '#4575b4'; }
+    expression.push(row['geoid'].toString(), color);
+  });
+  
+  // Last value is the default, used where there is no data
+  expression.push("rgba(0,0,0,0)");
+  map.setPaintProperty('municipality-fill', 'fill-color', expression)
+
 })
 
 function getReport(e) {
