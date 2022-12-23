@@ -1,5 +1,5 @@
 # Mapbox Table Join (local data)
-Mapbox sample with locally stored CSV table join to style map.
+Mapbox GL js sample with locally stored CSV table join to style map.
 
 ## JS library dependencies
 
@@ -11,4 +11,4 @@ Mapbox sample with locally stored CSV table join to style map.
 
 - [DVRPC Vector Tiles](https://tiles.dvrpc.org/)
 
-![alt text](https://raw.githubusercontent.com/crvanpollard/greenenergy/master/img/app-map.PNG)
+![alt text](https://raw.githubusercontent.com/crvanpollard/greenenergy/master/img/app-map.png)
